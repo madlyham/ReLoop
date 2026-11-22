@@ -64,7 +64,6 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "images" {
     apply_server_side_encryption_by_default {
       sse_algorithm = "AES256"
     }
-    bucket_key_enabled = true
   }
 }
 
@@ -73,7 +72,7 @@ resource "aws_s3_bucket_cors_configuration" "images" {
 
   cors_rule {
     allowed_headers = ["*"]
-    allowed_methods = ["PUT", "POST", "GET"]
+    allowed_methods = ["POST", "GET"]
     allowed_origins = [
       "http://localhost:5173",
       "https://${aws_cloudfront_distribution.web.domain_name}",
@@ -156,7 +155,6 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "web" {
     apply_server_side_encryption_by_default {
       sse_algorithm = "AES256"
     }
-    bucket_key_enabled = true
   }
 }
 

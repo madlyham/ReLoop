@@ -17,7 +17,7 @@ def lambda_handler(event, context):
     
     # Spec 4.1: New accounts default to Owner role
     role = 'Owner'
-    timestamp = datetime.datetime.utcnow().isoformat() + 'Z'
+    timestamp = datetime.datetime.now(datetime.timezone.utc).isoformat().replace('+00:00', 'Z')
 
     try:
         dynamodb.put_item(

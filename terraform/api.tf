@@ -63,7 +63,7 @@ resource "aws_iam_role_policy" "api_access" {
         Action = ["bedrock:InvokeModel"]
         Resource = [
           "arn:aws:bedrock:*:${data.aws_caller_identity.current.account_id}:inference-profile/${var.ai_model_id}",
-          "arn:aws:bedrock:*::foundation-model/*"
+          "arn:aws:bedrock:*::foundation-model/moonshotai.kimi-k3*"
         ]
       },
       {
@@ -71,8 +71,8 @@ resource "aws_iam_role_policy" "api_access" {
         Effect = "Allow"
         Action = ["bedrock:ApplyGuardrail"]
         Resource = [
-          "arn:aws:bedrock:${data.aws_region.current.region}:${data.aws_caller_identity.current.account_id}:guardrail/*",
-          "arn:aws:bedrock:*:${data.aws_caller_identity.current.account_id}:guardrail-profile/*"
+          aws_bedrock_guardrail.main.arn,
+          "arn:aws:bedrock:*:${data.aws_caller_identity.current.account_id}:guardrail-profile/apac.guardrail.v1:0"
         ]
       },
       {
