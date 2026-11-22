@@ -1,0 +1,25 @@
+# Copy to terraform.tfvars and fill in your local values before running terraform plan/apply.
+# Never commit terraform.tfvars or *.tfstate files.
+
+aws_region     = "ap-southeast-1"
+project_prefix = "reloop2"
+bucket_suffix  = "your-4char"
+
+alert_email          = "alerts@example.com"
+origin_verify_secret = "replace-with-64-hex-chars-from-python-secrets-token-hex-32"
+
+ai_model_id = "global.moonshotai.kimi-k3"
+
+# Leave empty on personal AWS accounts without an IAM permissions boundary
+role_permissions_boundary_name = ""
+
+# Set to "INACTIVE" and run `terraform apply` before running `terraform destroy`
+cognito_deletion_protection = "ACTIVE"
+
+api_zip_path               = "../zips/reloop2-api.zip"
+post_confirmation_zip_path = "../zips/reloop2-post-confirmation.zip"
+
+common_tags = {
+  Project = "reloop2"
+  Purpose = "workshop"
+}

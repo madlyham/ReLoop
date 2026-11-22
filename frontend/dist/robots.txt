@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /partner
+Disallow: /admin
+Disallow: /chat
+Disallow: /transactions
+Disallow: /profile
+Allow: /
